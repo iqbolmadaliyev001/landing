@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IT line Learning Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--text:#0a0e1f;--muted:#5b6478;--line:#d8deeb;--input:#f0f3fa;--blue1:#0090f0;--blue2:#1ac6f5;--or1:#ff7a00;--or2:#ffa733}
+[data-theme="dark"]{--bg:#080c1c;--card:#111631;--text:#fff;--muted:#a3abc4;--line:#232a4d;--input:#0a0e22}
+*{box-sizing:border-box;margin:0}
+body{font-family:Onest,system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s}
+button,select,input{font:inherit;color:inherit}
+header{max-width:1200px;margin:0 auto;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:12px;cursor:pointer;background:none;border:0}
+.logo i{width:54px;height:54px;border-radius:50%;background:#fff;color:#080c1c;display:grid;place-items:center;font:800 24px Onest;font-style:normal}
+.logo b{display:block;font-size:22px;letter-spacing:.5px;text-align:left}
+.logo small{display:block;font-size:10px;letter-spacing:3px;color:var(--muted);text-align:left}
+nav{display:flex;gap:30px;align-items:center}
+nav button{background:none;border:0;cursor:pointer;font-weight:500;font-size:16px}
+nav button:hover{color:var(--blue2)}
+.sat{background:var(--blue1)!important;color:#fff;padding:5px 12px;border-radius:99px;font-size:13px!important;font-weight:700!important}
+.right{display:flex;align-items:center;gap:12px}
+.btn-or{background:linear-gradient(90deg,var(--or1),var(--or2));color:#fff;border:0;border-radius:99px;padding:16px 34px;font-weight:600;font-size:17px;cursor:pointer}
+.icon{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer;display:grid;place-items:center;font-size:18px}
+.lang{position:relative}
+.lang .icon{width:auto;padding:0 14px;border-radius:99px;font-size:14px;font-weight:600}
+.lang ul{position:absolute;right:0;top:46px;list-style:none;padding:6px;background:var(--card);border:1px solid var(--line);border-radius:14px;display:none;min-width:130px;z-index:5}
+.lang ul.open{display:block}
+.lang li{padding:9px 12px;border-radius:9px;cursor:pointer;font-size:15px}
+.lang li:hover,.lang li.on{background:var(--input)}
+main{max-width:1200px;margin:0 auto;padding:0 24px 60px}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:20px;min-height:calc(100vh - 130px)}
+h1{font-size:clamp(44px,6.4vw,86px);line-height:1.02;font-weight:700;letter-spacing:-2px}
+.hero p{margin:32px 0 40px;font-size:20px;line-height:1.6;color:var(--muted);max-width:620px}
+.btn-bl{background:linear-gradient(90deg,var(--blue1),var(--blue2));color:#fff;border:0;border-radius:99px;padding:20px 40px;font-weight:600;font-size:19px;cursor:pointer;box-shadow:0 14px 40px -12px var(--blue1)}
+.books{position:relative;height:480px}
+.book{position:absolute;width:250px;height:340px;border-radius:6px 14px 14px 6px;background:linear-gradient(150deg,#0a4fc4,#0090f0 60%,#1fd6f0);padding:26px 22px;color:#fff;box-shadow:0 30px 50px -20px #000a}
+.book small{font-size:10px;letter-spacing:3px;opacity:.85}
+.book h3{font-size:30px;margin:6px 0 4px;font-weight:700}
+.book em{font-size:9px;letter-spacing:1.5px;font-style:normal;opacity:.7}
+.book svg{position:absolute;right:14px;bottom:44px;width:65%;fill:#fff}
+.book span{position:absolute;left:22px;bottom:22px;font-size:8px;letter-spacing:2px;border-left:2px solid #fff8;padding-left:8px;line-height:1.5}
+.b1{left:0;top:80px;transform:rotate(-14deg) scale(.92)}
+.b2{left:120px;top:50px;transform:rotate(-7deg) scale(.96)}
+.b3{left:250px;top:40px;transform:rotate(-2deg) scale(1.12);z-index:2}
+/* form */
+.form-wrap{display:none;justify-content:center;padding-top:20px}
+.card{width:100%;max-width:790px;background:var(--card);border:1px solid var(--line);border-radius:36px;padding:48px}
+.card h2{font-size:40px;letter-spacing:-1px}
+.card>p{color:var(--muted);margin:10px 0 32px;font-size:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.full{grid-column:1/-1}
+.field input,.field select{width:100%;height:66px;border-radius:24px;border:1px solid var(--line);background:var(--input);padding:0 24px;font-size:17px;outline:0;transition:border-color .2s}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='m1 1 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 24px center;cursor:pointer}
+.field input:focus,.field select:focus{border-color:var(--blue1)}
+.field.err input,.field.err select{border-color:#ff5a5f}
+.field small{display:none;color:#ff5a5f;font-size:13px;margin:6px 0 0 18px}
+.field.err small{display:block}
+.card .btn-bl{width:100%;margin-top:30px;height:70px;padding:0;font-size:20px}
+.btn-bl:disabled{opacity:.6;cursor:wait}
+.back{background:none;border:0;color:var(--muted);cursor:pointer;margin-bottom:18px;font-size:15px}
+.toast{position:fixed;left:50%;bottom:36px;transform:translate(-50%,30px);background:#181f42;color:#fff;padding:14px 26px;border-radius:99px;opacity:0;pointer-events:none;transition:.3s;z-index:20;font-weight:500;border:1px solid #2f3a75}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.ok{background:#0c8a4f;border-color:#0c8a4f}
+.toast.bad{background:#c0392b;border-color:#c0392b}
+option{color:var(--text);background:var(--card)}
+.burger,.mmenu{display:none}
+.mmenu{position:absolute;left:16px;right:16px;top:74px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:10px;z-index:10;flex-direction:column;box-shadow:0 20px 50px -20px #000a}
+.mmenu.open{display:flex}
+.mmenu button{background:none;border:0;text-align:left;padding:14px 16px;border-radius:12px;font-size:17px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:10px}
+.mmenu button:hover{background:var(--input)}
+.mmenu .sat{align-self:flex-start;margin:6px 16px}
+.mmenu .btn-or{margin:8px 6px 4px;text-align:center;justify-content:center;padding:14px}
+header{position:relative}
+@media(max-width:900px){
+  header{padding:14px 16px}
+  nav,header .right>.btn-or{display:none}
+  .burger{display:grid}
+  .logo i{width:44px;height:44px;font-size:20px}.logo b{font-size:18px}.logo small{font-size:8px;letter-spacing:2px}
+  main{padding:0 16px 40px}
+  .hero{grid-template-columns:1fr;min-height:0;padding-top:24px;gap:10px}
+  h1{font-size:clamp(38px,11.5vw,56px);letter-spacing:-1px;line-height:1.08}
+  .hero p{font-size:17px;margin:20px 0 28px}
+  .btn-bl{width:100%;border-radius:18px;padding:18px 20px;font-size:18px}
+  .books{height:300px;width:100%;max-width:380px;margin:10px auto 0}
+  .book{width:150px;height:205px;padding:14px 12px}
+  .book small{font-size:6px;letter-spacing:2px}.book h3{font-size:18px}.book em{font-size:5px}
+  .book span{font-size:5px;left:12px;bottom:12px}.book svg{bottom:26px}
+  .b1{left:0;top:50px}.b2{left:68px;top:28px}.b3{left:140px;top:14px}
+}
+@media(max-width:640px){
+  .form-wrap{padding-top:0}
+  .grid{grid-template-columns:1fr;gap:6px}
+  .card{background:#fff;color:#0a0e1f;border:2px solid var(--blue1);border-radius:28px;padding:28px 22px}
+  .card h2{text-align:center;font-size:27px;line-height:1.25;letter-spacing:-.5px}
+  .card>p{text-align:center;color:#5b6478;font-size:16px;margin:8px 0 22px}
+  .back{color:#5b6478}
+  .field input,.field select{height:58px;background-color:transparent;border:0;border-bottom:1.5px solid #d5dbe6;border-radius:0;padding:0 4px;color:#0a0e1f;font-size:17px}
+  .field select{background-position:right 4px center}
+  .field select:has(option[value=""]:checked){color:#8a93a6}
+  .field input::placeholder{color:#8a93a6}
+  .field input:focus,.field select:focus{border-color:var(--blue1)}
+  .field.err input,.field.err select{border-bottom-color:#ff5a5f}
+  .field small{margin-left:4px}
+  option{color:#0a0e1f;background:#fff}
+  .card .btn-bl{height:62px;border-radius:18px;margin-top:26px;font-size:18px}
+}
+:focus-visible{outline:2px solid var(--blue2);outline-offset:2px}
+</style>
+</head>
+<body>
+<header>
+  <button class="logo" onclick="show('home')" aria-label="Home"><i>I</i><span><b>IT line</b><small>LEARNING CENTER</small></span></button>
+  <nav>
+    <button data-i18n="n_courses" onclick="soon()"></button>
+    <button data-i18n="n_branches" onclick="soon()"></button>
+    <button onclick="soon()">IELTS Mock</button>
+    <button data-i18n="n_cert" onclick="soon()"></button>
+    <button class="sat" onclick="soon()">SAT Course</button>
+  </nav>
+  <div class="right">
+    <div class="lang">
+      <button class="icon" id="langBtn" aria-label="Language">UZ</button>
+      <ul id="langList"><li data-l="uz">O'zbekcha</li><li data-l="ru">Русский</li><li data-l="en">English</li></ul>
+    </div>
+    <button class="icon" id="themeBtn" aria-label="Theme">☀</button>
+    <button class="btn-or" data-i18n="signup" onclick="show('form')"></button>
+    <button class="icon burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+  <div class="mmenu" id="mmenu">
+    <button data-i18n="n_courses" onclick="soon()"></button>
+    <button data-i18n="n_branches" onclick="soon()"></button>
+    <button onclick="soon()">IELTS Mock</button>
+    <button data-i18n="n_cert" onclick="soon()"></button>
+    <button class="sat" onclick="soon()">SAT Course</button>
+    <button class="btn-or" data-i18n="signup" onclick="show('form')"></button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div>
+      <h1 data-i18n="h1"></h1>
+      <p data-i18n="sub"></p>
+      <button class="btn-bl" data-i18n="cta" onclick="show('form')"></button>
+    </div>
+    <div class="books" aria-hidden="true">
+      <div class="book b1"><small>ENGLISH COURSE</small><h3>Beginner</h3><em>BUILD YOUR ENGLISH. OPEN YOUR WORLD.</em><svg viewBox="0 0 100 100"><use href="#lion"/></svg><span>LISTENING<br>SPEAKING<br>READING<br>WRITING</span></div>
+      <div class="book b2"><small>ENGLISH COURSE</small><h3>Elementary</h3><em>BUILD YOUR ENGLISH. OPEN YOUR WORLD.</em><svg viewBox="0 0 100 100"><use href="#lion"/></svg><span>LISTENING<br>SPEAKING<br>READING<br>WRITING</span></div>
+      <div class="book b3"><small>ENGLISH COURSE</small><h3>Pre-intermediate</h3><em>BUILD YOUR ENGLISH. OPEN YOUR WORLD.</em><svg viewBox="0 0 100 100"><use href="#lion"/></svg><span>LISTENING<br>SPEAKING<br>READING<br>WRITING</span></div>
+    </div>
+  </section>
+
+  <section class="form-wrap" id="form">
+    <div class="card">
+      <button class="back" onclick="show('home')" data-i18n="back"></button>
+      <h2 data-i18n="f_title"></h2>
+      <p data-i18n="f_sub"></p>
+      <div class="grid" id="frm">
+        <div class="field full" id="f_name"><input id="name" autocomplete="name" data-ph="p_name"><small data-i18n="e_name"></small></div>
+        <div class="field" id="f_phone"><input id="phone" type="tel" inputmode="tel" value="+998 " placeholder="+998 90 123 45 67"><small data-i18n="e_phone"></small></div>
+        <div class="field" id="f_age"><select id="age"></select><small data-i18n="e_age"></small></div>
+        <div class="field" id="f_city"><select id="city"></select><small data-i18n="e_city"></small></div>
+        <div class="field" id="f_course"><select id="course"></select><small id="courseErr" data-i18n="e_course"></small></div>
+      </div>
+      <button class="btn-bl" id="send" onclick="submitForm()"></button>
+    </div>
+  </section>
+</main>
+
+<svg width="0" height="0" style="position:absolute"><defs><g id="lion"><path d="M62 4C40 8 24 26 22 48c-1 12 2 22 8 30l-6 14 18-6c8 4 18 4 26 0 12-6 18-16 18-30 0-6-3-10-8-10 4-8 2-18-6-24 2-6-2-14-10-18z" opacity=".95"/></g></defs></svg>
+<div class="toast" id="toast"></div>
+
+<script>
+// ====== SOZLAMA: Google Apps Script Web App URL'ni shu yerga qo'ying ======
+const SHEETS_URL = "1N9764N9U2-774dJkpmy4Bv40L-1dzixZYy-3el5Umho";
+
+const CITIES = ["Toshkent","Samarqand","Buxoro","Andijon","Farg'ona","Namangan","Qarshi","Navoiy","Nukus","Urganch","Jizzax","Guliston","Termiz","Xiva","Qo'qon","Margilon"];
+const T = {
+uz:{n_courses:"Kurslar",n_branches:"Filiallar",n_cert:"Sertifikat",signup:"Ro'yxatdan o'tish",
+ h1:"Ingliz tili — kelajagingizga ochiq eshik!",sub:"11 yil davomida 100 000 dan ortiq yoshlarga maqsadlariga erishishda yordam berdik. Navbat sizda.",cta:"Birinchi darsga yozilish",
+ back:"← Orqaga",f_title:"Birinchi darsga yozilish",f_sub:"Sinov darsi bepul. Formani to'ldiring.",
+ p_name:"Ismingiz",ph_age:"Farzandingiz yoshi",ph_city:"Shaharni tanlang",ph_course:"Kursni tanlang",send:"Yuborish",sending:"Yuborilmoqda...",
+ e_name:"Ismingizni kiriting",e_phone:"Telefon raqamini to'liq kiriting",e_age:"Yoshni tanlang",e_city:"Shaharni tanlang",e_course:"Kursni tanlang",
+ e_mis_rob:"Robototexnika 7-12 yosh uchun",e_mis_dev:"Dasturlash 12+ yosh uchun",
+ soon:"Bo'limlar hali mavjud emas",ok:"Rahmat! Tez orada siz bilan bog'lanamiz.",fail:"Xatolik yuz berdi. Qayta urinib ko'ring.",
+ c_rob:"Robototexnika (7-12 yosh)",c_dev:"Dasturlash (12+ yosh)",yrs:" yosh"},
+ru:{n_courses:"Курсы",n_branches:"Филиалы",n_cert:"Сертификат",signup:"Записаться",
+ h1:"Английский — открытая дверь в ваше будущее!",sub:"На протяжении 11 лет мы помогли более 100 000 молодых людей достичь своих целей. Теперь ваша очередь.",cta:"Записаться на первый урок",
+ back:"← Назад",f_title:"Запись на первый урок",f_sub:"Пробный урок бесплатный. Заполните форму.",
+ p_name:"Ваше имя",ph_age:"Возраст ребёнка",ph_city:"Выберите город",ph_course:"Выберите курс",send:"Отправить",sending:"Отправка...",
+ e_name:"Введите имя",e_phone:"Введите номер полностью",e_age:"Выберите возраст",e_city:"Выберите город",e_course:"Выберите курс",
+ e_mis_rob:"Робототехника для 7-12 лет",e_mis_dev:"Программирование для 12+ лет",
+ soon:"Разделы пока недоступны",ok:"Спасибо! Мы скоро свяжемся с вами.",fail:"Произошла ошибка. Попробуйте ещё раз.",
+ c_rob:"Робототехника (7-12 лет)",c_dev:"Программирование (12+ лет)",yrs:" лет"},
+en:{n_courses:"Courses",n_branches:"Branches",n_cert:"Certificate",signup:"Sign up",
+ h1:"English — an open door to your future!",sub:"For 11 years we have helped over 100,000 young people reach their goals. Now it's your turn.",cta:"Book your first lesson",
+ back:"← Back",f_title:"Book your first lesson",f_sub:"The trial lesson is free. Fill in the form.",
+ p_name:"Your name",ph_age:"Child's age",ph_city:"Select city",ph_course:"Select course",send:"Submit",sending:"Sending...",
+ e_name:"Enter your name",e_phone:"Enter the full phone number",e_age:"Select age",e_city:"Select city",e_course:"Select course",
+ e_mis_rob:"Robotics is for ages 7-12",e_mis_dev:"Programming is for ages 12+",
+ soon:"Sections are not available yet",ok:"Thank you! We will contact you soon.",fail:"Something went wrong. Please try again.",
+ c_rob:"Robotics (ages 7-12)",c_dev:"Programming (ages 12+)",yrs:" y.o."}
+};
+const $ = id => document.getElementById(id);
+let lang = "uz";
+const store = {get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+function fillSelects(){
+  const t=T[lang], a=$("age").value, c=$("city").value, k=$("course").value;
+  let h=`<option value="" disabled selected>${t.ph_age}</option>`;
+  for(let i=8;i<=29;i++) h+=`<option value="${i}">${i}${t.yrs}</option>`;
+  h+=`<option value="30+">30+${t.yrs}</option>`;
+  $("age").innerHTML=h;
+  $("city").innerHTML=`<option value="" disabled selected>${t.ph_city}</option>`+CITIES.map(x=>`<option>${x}</option>`).join("");
+  $("course").innerHTML=`<option value="" disabled selected>${t.ph_course}</option><option value="Robototexnika">${t.c_rob}</option><option value="Dasturlash">${t.c_dev}</option>`;
+  $("age").value=a; $("city").value=c; $("course").value=k;
+}
+function setLang(l){
+  lang=l; store.set("lang",l); document.documentElement.lang=l;
+  document.querySelectorAll("[data-i18n]").forEach(e=>e.textContent=T[l][e.dataset.i18n]);
+  document.querySelectorAll("[data-ph]").forEach(e=>e.placeholder=T[l][e.dataset.ph]);
+  $("send").textContent=T[l].send; $("langBtn").textContent=l.toUpperCase()+" ▾";
+  document.querySelectorAll("#langList li").forEach(li=>li.classList.toggle("on",li.dataset.l===l));
+  fillSelects();
+}
+function setTheme(th){
+  document.documentElement.dataset.theme=th; store.set("theme",th);
+  $("themeBtn").textContent = th==="dark" ? "☀" : "🌙";
+}
+function show(v){
+  $("home").style.display = v==="home" ? "" : "none";
+  $("form").style.display = v==="form" ? "flex" : "none";
+  scrollTo({top:0});
+}
+let tt;
+function toast(msg,cls=""){
+  const t=$("toast"); t.textContent=msg; t.className="toast show "+cls;
+  clearTimeout(tt); tt=setTimeout(()=>t.className="toast",2800);
+}
+const soon = () => toast(T[lang].soon);
+
+$("burger").onclick=e=>{e.stopPropagation();$("mmenu").classList.toggle("open");$("burger").textContent=$("mmenu").classList.contains("open")?"✕":"☰"};
+document.addEventListener("click",e=>{if(!e.target.closest("#mmenu")){$("mmenu").classList.remove("open");$("burger").textContent="☰"}});
+$("langBtn").onclick=e=>{e.stopPropagation();$("langList").classList.toggle("open")};
+document.querySelectorAll("#langList li").forEach(li=>li.onclick=()=>{setLang(li.dataset.l);$("langList").classList.remove("open")});
+document.addEventListener("click",()=>$("langList").classList.remove("open"));
+$("themeBtn").onclick=()=>setTheme(document.documentElement.dataset.theme==="dark"?"light":"dark");
+
+// telefon maskasi: +998 XX XXX XX XX
+$("phone").addEventListener("input",e=>{
+  let d=e.target.value.replace(/\D/g,"");
+  if(d.startsWith("998")) d=d.slice(3);
+  d=d.slice(0,9);
+  const p=[d.slice(0,2),d.slice(2,5),d.slice(5,7),d.slice(7,9)].filter(Boolean).join(" ");
+  e.target.value="+998 "+p;
+});
+
+function mark(id,bad,msgKey){
+  const f=$(id); f.classList.toggle("err",bad);
+  if(msgKey) f.querySelector("small").textContent=T[lang][msgKey];
+  return !bad;
+}
+async function submitForm(){
+  const name=$("name").value.trim(), phone=$("phone").value, age=$("age").value, city=$("city").value, course=$("course").value;
+  let ok=true;
+  ok=mark("f_name",name.length<2)&&ok;
+  ok=mark("f_phone",phone.replace(/\D/g,"").length!==12)&&ok;
+  ok=mark("f_age",!age)&&ok;
+  ok=mark("f_city",!city)&&ok;
+  const cKey="e_course", cBad=!course;
+  ok=mark("f_course",cBad,cKey)&&ok;
+  if(!ok) return;
+
+  const btn=$("send"); btn.disabled=true; btn.textContent=T[lang].sending;
+  try{
+    // Apps Script CORS bermaydi, shuning uchun no-cors + text/plain
+    await fetch(SHEETS_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify({name,phone,age,city,course})});
+    toast(T[lang].ok,"ok");
+    $("name").value="";$("phone").value="+998 ";fillSelects();
+    ["age","city","course"].forEach(i=>$(i).value="");
+    setTimeout(()=>show("home"),1800);
+  }catch(err){
+    toast(T[lang].fail,"bad");
+  }finally{
+    btn.disabled=false; btn.textContent=T[lang].send;
+  }
+}
+
+setTheme(store.get("theme")||"dark");
+setLang(store.get("lang")||"uz");
+</script>
+</body>
+</html>
