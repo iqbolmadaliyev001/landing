@@ -194,7 +194,7 @@ const store = {get(k){try{return localStorage.getItem(k)}catch(e){return null}},
 function fillSelects(){
   const t=T[lang], a=$("age").value, c=$("city").value, k=$("course").value;
   let h=`<option value="" disabled selected>${t.ph_age}</option>`;
-  for(let i=8;i<=29;i++) h+=`<option value="${i}">${i}${t.yrs}</option>`;
+  for(let i=7;i<=29;i++) h+=`<option value="${i}">${i}${t.yrs}</option>`;
   h+=`<option value="30+">30+${t.yrs}</option>`;
   $("age").innerHTML=h;
   $("city").innerHTML=`<option value="" disabled selected>${t.ph_city}</option>`+CITIES.map(x=>`<option>${x}</option>`).join("");
@@ -272,6 +272,7 @@ async function submitForm(){
 
 setTheme(store.get("theme")||"dark");
 setLang(store.get("lang")||"uz");
+show("form"); // sahifa ochilganda to'g'ridan-to'g'ri forma ko'rinadi
 </script>
 </body>
 </html>
